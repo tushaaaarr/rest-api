@@ -1,0 +1,21 @@
+{% include 'base.html' %}
+{%block body%}
+Hello {{ name }},
+<div class="container">
+    <table class="table">
+        <caption> Here is your details .. </caption>
+        <thead>
+            <tr>
+                <th> Name </th>
+                <th> Result (BMI) </th>
+                <th> Date </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> {{name}} </td>
+                <td> {{bmi}} </td>
+                <td> {{time}} </td>
+            </tr>
+</div>
+{%endblock%}

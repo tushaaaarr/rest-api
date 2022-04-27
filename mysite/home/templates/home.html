@@ -1,0 +1,63 @@
+{% include 'base.html' %}
+{%block body%}
+<div class="logout">
+    <div class="dropdown mt-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">{{context.user_id}}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+         
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header">
+                    <h3 class="text-center font-weight-light my-4"> BMI Calculator </h3>
+                </div>
+                <div class="container">
+                    <p class="text-center text-danger mt-3 font-weight-bolder mb-0">{{context.message}}</p>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {%csrf_token%}
+                        <div class="form-control mb-3">
+                            <input class="form-control" id="first_name" type="text" name="first_name"
+                                value="{{context.first_name}}" placeholder="First Name" />
+                        </div>
+                        <div class="form-control mb-3">
+                            <input class="form-control" type="text" name="last_name" placeholder="Last Name"
+                                value="{{context.last_name}}" />
+                        </div>
+                        <div class="form-control mb-3">
+                            <select class="form-select" name="gender">
+                                <option selected>{%if context.gender == 'male' %}Male {%else%}
+                                    Female {%endif%}
+                                </option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-control mb-3" id="height">
+                            <input class="form-control" type="text" name="height" placeholder="Height"
+                                value="{{context.height}}" />
+                        </div>
+                        <div class="form-control mb-3" id="weight">
+                            <input class="form-control" type="text" name="weight" placeholder="Weight"
+                                value="{{context.weight}}" />
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary" type="submit" onclick='Proceed()'>Result</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
